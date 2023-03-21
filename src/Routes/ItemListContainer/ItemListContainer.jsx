@@ -10,7 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import Spinner from "../../Components/Spinner/Spinner";
-import UnavailableWarning from "../../Components/Unavailable Warning/UnavailableWarning";
+import UnavailableWarning from "../../Components/UnavailableWarning/UnavailableWarning";
 
 const ItemListContainer = () => {
   let [products, setProducts] = useState([]);
@@ -54,7 +54,7 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <h3>{title}</h3>
+      {products.length !== 0 && <h3>{title}</h3>}
       <div className="container">
         {load ? (
           <Spinner />
