@@ -1,0 +1,126 @@
+.checkout{
+    display: flex;
+}
+.checkout form h5 {
+    font-size: larger;
+    padding: 1rem;
+}
+.checkout form {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    padding: 3rem 5rem;
+}
+.checkout form input, .checkout form select, .checkout form input:focus-visible, .checkout form select:focus-visible{
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #8d8d8d;
+    margin: 1.8rem 3rem 1.2rem 1rem;
+    padding-bottom: 5px;
+}
+.red-bottom{
+    border-bottom: 1px solid red;
+}
+.checkout form input::placeholder, .checkout form select{
+    color: #444;
+    font-size: medium;
+}
+form .button{
+    margin: 1.8rem 3rem 1.2rem 1rem;
+
+}
+.input-together{
+    display: flex;
+    justify-content: space-between;
+}
+.input-together input{
+    width: 43%;
+}
+.checkout aside{
+    width: 30vw;
+    background-color: #262626;
+    color: #fff;
+}
+.checkout aside{
+    padding: 3rem 2rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.checkout aside h4{
+    font-size: large;
+    padding: 1rem 0;
+}
+.checkout aside ul{
+    width: 100%;
+    margin-top: 2rem;
+    list-style-type: none;
+}
+.checkout-item{
+    padding-bottom: 0.2rem;
+}
+.checkout-item_title{
+    font-size: .9rem;
+}
+.checkout-item_info{
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem 0 1.3rem 0;
+}
+.checkout-total{
+    width: 100%;
+    text-align: right;
+    border-top: 1px solid #fff;
+}
+.checkout .error-input{
+    border-bottom: 1px solid #b92f2f;
+}
+.checkout .valid-input{
+    border-bottom: 1px solid green;
+}
+
+/* Media lg */
+
+@media (max-width: 992px){
+    .checkout form {
+      padding: 2rem 3rem;
+    }
+    .checkout aside{
+        padding: 2rem 1.6rem;
+    }
+  }
+
+/* Media md */
+
+@media (max-width: 768px){
+    .checkout{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .checkout form{
+        width: 92vw;
+        padding: 2rem;
+    }
+    .checkout form input, .checkout form select, .checkout form input:focus-visible, .checkout form select:focus-visible, form .button{
+        margin: 1.8rem 1rem 1.2rem 1rem;
+    }
+    .checkout aside{
+        width: 100%;
+        padding: 2rem 6rem;
+    }
+    .checkout aside h4{
+        padding-bottom: 2rem;
+    }
+    .checkout aside h5{
+        font-size: 1rem;
+    }
+}
+
+/* Media sm */
+
+@media (max-width: 576px){
+    .checkout aside {
+        padding: 2rem;
+    }
+}

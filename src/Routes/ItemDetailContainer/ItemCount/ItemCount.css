@@ -1,0 +1,37 @@
+.ItemCounter{
+    display: flex;
+    border: #a0a0a0 1px solid;
+    background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}
+.ItemCounter button{
+    color: #2a2a2a;
+    background-color: #ffffff00;
+    border: none;
+    padding: 11px 8px 7px 8px;
+    font-weight: 100;
+    cursor: pointer;
+}
+.ItemCounter p{
+    margin: auto;
+    font-size: 1.1rem;
+}
+.ItemCounter button:active{
+    color: #000;
+}
+.ItemCounter .disabled{
+    color: #656565;
+    cursor: not-allowed;
+}
+.ItemCounter .disabled:active{
+    color: #656565;
+}
+
+.counter{
+    display: flex;
+    justify-content: space-evenly;
+}
+.product-buttons{
+    margin-bottom: 2rem;
+}

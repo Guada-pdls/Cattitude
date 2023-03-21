@@ -1,0 +1,44 @@
+.about{
+    text-align: center;
+    padding: 2rem 0;
+    max-width: 60vw;
+    margin: auto;
+}
+.about h3{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: x-large;
+    max-width: 15vw;
+    margin: auto;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid #000;
+    margin-bottom: 2rem;
+}
+.about h5{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-bottom: 1.5rem;
+}
+.about p, .about .about-img{
+    margin-bottom: 2rem;
+    letter-spacing: .5px;
+}
+
+/* Media m */
+
+@media (max-width: 768px) {
+    .about{
+        max-width: 80vw;
+    }
+    .about h3{
+        max-width: 90vw;
+        margin-bottom: 1rem;
+        font-size: large;
+    }
+    .about h5 {
+        font-size: small;
+    }
+    .about-img img{
+        max-width: 80vw;
+    }
+}
