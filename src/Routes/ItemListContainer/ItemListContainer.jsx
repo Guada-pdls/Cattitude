@@ -16,13 +16,13 @@ const ItemListContainer = () => {
   let [products, setProducts] = useState([]);
   let [load, setLoad] = useState(true);
   const { categoryId } = useParams();
-  let [title, setTitle] = useState()
+  let [title, setTitle] = useState();
 
   useEffect(() => {
     const db = getFirestore();
     const productsCollection = collection(db, "products");
     if (categoryId !== undefined) {
-      setTitle(categoryId.replace(/-/g, " "))
+      setTitle(categoryId.replace(/-/g, " "));
       const q = query(
         productsCollection,
         where("category", "==", categoryId.replace(/-/g, " "))
@@ -38,7 +38,7 @@ const ItemListContainer = () => {
         .catch((error) => console.log(error))
         .finally(setLoad(false));
     } else {
-      setTitle("All products")
+      setTitle("All products");
       getDocs(productsCollection)
         .then((snapshotList) => {
           const docs = snapshotList.docs.map((snapshot) => ({
@@ -58,7 +58,7 @@ const ItemListContainer = () => {
       <div className="container">
         {load ? (
           <Spinner />
-        ) : typeof products[0] !== undefined ? (
+        ) : products[0] !== undefined ? (
           <ItemList items={products} />
         ) : (
           <UnavailableWarning />

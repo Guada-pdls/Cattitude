@@ -83,7 +83,7 @@ const Checkout = ({ item }) => {
           footer: `Order ID: ${id}`,
           confirmButtonText: "Back to store",
         }).then(() => {
-          navigate("/");
+          window.location.href = "/";
           items === cart ? clearCart() : setItemBuyNow();
           setItems();
         })}

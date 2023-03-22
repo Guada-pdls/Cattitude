@@ -4,7 +4,7 @@ import ItemDetail from "./ItemDetail";
 import "./ItemDetailContainer.css";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Spinner from "../../Components/Spinner/Spinner";
-import UnavailableWarning from "../../Components/Unavailable Warning/UnavailableWarning";
+import UnavailableWarning from "../../Components/UnavailableWarning/UnavailableWarning";
 
 const ItemDetailContainer = () => {
   let [product, setProduct] = useState({});
