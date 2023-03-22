@@ -21,13 +21,18 @@ const Checkout = ({ item }) => {
   const [phone, setPhone] = useState();
 
   const checkName = (e) =>
-    e.target.value.match(/^[a-zA-Z]{3,}$/) ? setName(true) : setName(false);
+  e.target.value.match(/^[a-zA-Z]{3,}$/) ? setName(true) : setName(false);
   const checkLastName = (e) =>
-    e.target.value.match(/^[a-zA-Z]{2,}$/)
-      ? setLastName(true)
-      : setLastName(false);
+  e.target.value.match(/^[a-zA-Z]{2,}$/)
+  ? setLastName(true)
+  : setLastName(false);
   const checkPhone = (e) =>
-    e.target.value.match(/^[0-9]{3,}$/) ? setPhone(true) : setPhone(false);
+  e.target.value.match(/^[0-9]{3,}$/) ? setPhone(true) : setPhone(false);
+  
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
   // Envío del formulario
 
@@ -75,11 +80,6 @@ const Checkout = ({ item }) => {
         icon: "error",
       });
     }
-  };
-
-  const inputChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
   };
 
   return (
