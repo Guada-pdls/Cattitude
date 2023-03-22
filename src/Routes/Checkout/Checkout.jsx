@@ -59,6 +59,17 @@ const Checkout = ({ item }) => {
       }).then((snapshot) => {
         setForm(formBase);
         setId(snapshot.id);
+        MySwal.fire({
+          title: "Successful purchase",
+          text: "Your order has been received and is being processed.  We will notify you as soon as your order is on its way. Thank you for choosing us. Meow!",
+          icon: "success",
+          footer: `Order ID: ${snapshot.id}`,
+          confirmButtonText: "Back to store",
+        }).then(() => {
+          navigate("/");
+          items === cart ? clearCart() : setItemBuyNow();
+          setItems();
+        })
       });
     } else {
       MySwal.fire({
@@ -75,18 +86,6 @@ const Checkout = ({ item }) => {
 
   return (
     <div className="checkout">
-      {typeof id !== "undefined" &&
-        MySwal.fire({
-          title: "Successful purchase",
-          text: "Your order has been received and is being processed.  We will notify you as soon as your order is on its way. Thank you for choosing us. Meow!",
-          icon: "success",
-          footer: `Order ID: ${id}`,
-          confirmButtonText: "Back to store",
-        }).then(() => {
-          window.location.href = "/";
-          items === cart ? clearCart() : setItemBuyNow();
-          setItems();
-        })}
       {typeof items === "undefined" ? (
         <div className="container"></div>
       ) : (
