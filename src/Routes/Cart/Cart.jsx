@@ -43,7 +43,7 @@ const Cart = () => {
           )}
         </div>
         {context.cart.length === 0 || (<div>
-          <div className="total-price">Total: $ {totalPrice}</div>
+          <div className="total-price">Total: $ {totalPrice.toFixed(2)}</div>
           <button
             className="btn btn-secondary"
             onClick={() => context.clearCart()}

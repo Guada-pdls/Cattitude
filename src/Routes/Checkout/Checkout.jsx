@@ -35,7 +35,6 @@ const Checkout = ({ item }) => {
 
   const formBase = { name: "", lastName: "", phone: "" };
   const [form, setForm] = useState(formBase);
-  const [id, setId] = useState();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -58,7 +57,6 @@ const Checkout = ({ item }) => {
         total,
       }).then((snapshot) => {
         setForm(formBase);
-        setId(snapshot.id);
         MySwal.fire({
           title: "Successful purchase",
           text: "Your order has been received and is being processed.  We will notify you as soon as your order is on its way. Thank you for choosing us. Meow!",
@@ -410,7 +408,7 @@ const Checkout = ({ item }) => {
                   ((total += itemBuyNow.quantity * itemBuyNow.price),
                   (<ItemCheckout product={itemBuyNow} />))}
             </ul>
-            <h4 className="checkout-total">Total: ${total}</h4>
+            <h4 className="checkout-total">Total: ${total.toFixed(2)}</h4>
           </aside>
         </>
       )}
