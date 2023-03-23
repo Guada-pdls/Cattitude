@@ -5,6 +5,7 @@ E-commerce inventado de productos para gatitos.
 | Componente          | Descripción |
 | ------------------- | ----------- |
 | Navbar              | Header con nav (categorías y secciones), menú hamburguesa, buscador de productos integrado, acceso al cart. |
+| Searcher            | Buscador de productos, cada uno dirige a su ItemDetail. |
 | Footer              | Footer mostrando derechos y enlaces a redes sociales de la empresa. |
 | Spinner             | Muestra un spinner en caso de loading. |
 | UnavailableWarning  | Si la categoría o el ítem de la ruta no existe, muestra un mensaje de que no está disponible. Recibe una prop factor, si esta es nula, muestra contenido para categoría, de lo contrario, para item. |
