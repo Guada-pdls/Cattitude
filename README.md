@@ -2,6 +2,8 @@
 
 E-commerce inventado de productos para gatitos.
 
+[Deploy](https://cattitude.vercel.app)
+
 | Componente          | Descripción |
 | ------------------- | ----------- |
 | Navbar              | Header con nav (categorías y secciones), menú hamburguesa, buscador de productos integrado, acceso al cart. |
