@@ -23,7 +23,11 @@ const ItemDetailContainer = () => {
         };
         setProduct(obj);
       })
-      .catch((error) => console.log(error))
+      .catch((error) => MySwal.fire({
+        title: "Error",
+        text: `${error}`,
+        icon: "error",
+      }))
       .finally(() => setLoad(false));
   }, [id]);
 

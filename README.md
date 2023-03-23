@@ -27,4 +27,4 @@ E-commerce inventado de productos para gatitos.
 ## Dependencias extra utilizadas: 
 - React Icons: Íconos.
 - Toastify: Notificación de agregar y remover items del cart.
-- SweetAlert: Alertas en el flujo de compra.
+- SweetAlert: Alertas en el flujo de compra y en errores de firebase.
