@@ -8,30 +8,26 @@ import ItemCheckout from "./ItemCheckout";
 import { useNavigate } from "react-router";
 
 const Checkout = ({ item }) => {
-  const { itemBuyNow, setItemBuyNow, cart, clearCart } =
+  const { itemBuyNow, totalPriceItemBuyNow, setItemBuyNow, cart, clearCart, totalPriceCart } =
     useContext(CartContext);
   const [items, setItems] = useState(item ? itemBuyNow : cart);
   const navigate = useNavigate();
-  let total = 0;
 
   // Validar campos
 
-  const [name, setName] = useState();
-  const [lastName, setLastName] = useState();
-  const [phone, setPhone] = useState();
+  const [formInputValid, setFormInputValid] = useState({name: undefined, lastName: undefined, phone: undefined})
 
-  const checkName = (e) =>
-  e.target.value.match(/^[a-zA-Z]{3,}$/) ? setName(true) : setName(false);
-  const checkLastName = (e) =>
-  e.target.value.match(/^[a-zA-Z]{2,}$/)
-  ? setLastName(true)
-  : setLastName(false);
-  const checkPhone = (e) =>
-  e.target.value.match(/^[0-9]{3,}$/) ? setPhone(true) : setPhone(false);
+  const checkName = e => setFormInputValid({...formInputValid, name: e.target.value.match(/^[a-zA-Z]{3,}$/) }) 
+
+  const checkLastName = e => setFormInputValid({...formInputValid, lastName: e.target.value.match(/^[a-zA-Z]{2,}$/)})
+
+  const checkPhone = e => setFormInputValid({...formInputValid, phone: e.target.value.match(/^[0-9]{3,}$/) })
   
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    console.log(formInputValid)
+    console.log(form)
   };
 
   // Envío del formulario
@@ -43,7 +39,7 @@ const Checkout = ({ item }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (name && lastName && phone) {
+    if (formInputValid.name && formInputValid.lastName && formInputValid.phone) {
       const db = getFirestore();
       const orderFormCollection = collection(db, "orders");
       let date = new Date();
@@ -88,7 +84,7 @@ const Checkout = ({ item }) => {
         <div className="container"></div>
       ) : (
         <>
-          <form action="" onSubmit={(e) => submitHandler(e)}>
+          <form onSubmit={(e) => submitHandler(e)}>
             <h5>Payment details</h5>
             <div className="input-together">
               <input
@@ -96,7 +92,7 @@ const Checkout = ({ item }) => {
                 placeholder="Name"
                 name="name"
                 className={
-                  name === undefined ? "" : name ? "valid-input" : "error-input"
+                  formInputValid.name === undefined ? "" : formInputValid.name ? "valid-input" : "error-input"
                 }
                 onChange={(e) => {
                   inputChangeHandler(e);
@@ -109,11 +105,9 @@ const Checkout = ({ item }) => {
                 placeholder="Last name"
                 name="lastName"
                 className={
-                  lastName === undefined
+                  formInputValid.lastName === undefined
                     ? ""
-                    : lastName
-                    ? "valid-input"
-                    : "error-input"
+                    : formInputValid.lastName ? "valid-input" : "error-input"
                 }
                 onChange={(e) => {
                   inputChangeHandler(e);
@@ -381,7 +375,7 @@ const Checkout = ({ item }) => {
               placeholder="Phone number"
               name="phone"
               className={
-                phone === undefined ? "" : phone ? "valid-input" : "error-input"
+                formInputValid.phone === undefined ? "" : formInputValid.phone ? "valid-input" : "error-input"
               }
               onChange={(e) => {
                 inputChangeHandler(e);
@@ -401,14 +395,12 @@ const Checkout = ({ item }) => {
               {!item
                 ? // Carrito
                   cart.map((prod) => {
-                    total += prod.quantity * prod.price;
                     return <ItemCheckout key={prod.id} product={prod} />;
                   })
                 : // Producto
-                  ((total += itemBuyNow.quantity * itemBuyNow.price),
-                  (<ItemCheckout product={itemBuyNow} />))}
+                  <ItemCheckout product={itemBuyNow} />}
             </ul>
-            <h4 className="checkout-total">Total: ${total.toFixed(2)}</h4>
+            <h4 className="checkout-total">Total: ${item ? totalPriceItemBuyNow().toFixed(2) : totalPriceCart().toFixed(2)}</h4>
           </aside>
         </>
       )}

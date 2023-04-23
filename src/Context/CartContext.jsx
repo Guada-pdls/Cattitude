@@ -52,16 +52,23 @@ const CartProvider = ({ children }) => {
 
   const clearCart = () => setCart([]);
 
+  const totalPriceCart = () => {
+    let total = 0
+    cart.map(prod => total += prod.quantity * prod.price)
+    return total
+  }
+
   const getInitial = id => {
     const productInCart = cart.find(product => product.id === id);
     return productInCart ? productInCart.quantity : 1;
   }
 
   const [itemBuyNow, setItemBuyNow] = useState();
+  const totalPriceItemBuyNow = () => itemBuyNow.quantity * itemBuyNow.price
 
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, clearCart, isInCart, getInitial, itemBuyNow, setItemBuyNow }}>
+      value={{ cart, addProduct, removeProduct, clearCart, isInCart, totalPriceCart, getInitial, itemBuyNow, setItemBuyNow, totalPriceItemBuyNow }}>
       {children}
     </CartContext.Provider>
   );
