@@ -11,43 +11,34 @@ const CartProvider = ({ children }) => {
 
   const isInCart = id => cart.some(prod => prod.id === id)
 
+  const cartMessage = msg => {
+    Toastify({
+      text: msg,
+      duration: 2000,
+      close: true,
+      stopOnFocus: true,
+      gravity: "top", 
+      position: "right",
+      offset: {
+        y: "4.5rem",
+      },
+      style: {
+        background: "#999999",
+      },
+    }).showToast()
+  }
+
   const addProduct = (quantityAdd, item) => {
     const updateProduct = isInCart(item.id)
     ? [...cart.filter(prod => prod.id !== item.id), { ...item, quantity: quantityAdd } ]
     : [...cart, { ...item, quantity: quantityAdd }];
     setCart(updateProduct);
-    Toastify({
-      text: "Successfully added!",
-      duration: 2000,
-      close: true,
-      stopOnFocus: true,
-      gravity: "top", 
-      position: "right",
-      offset: {
-        y: "4rem",
-      },
-      style: {
-        background: "#999999)",
-      },
-    }).showToast()
+    cartMessage("Successfully added")
   };
 
   const removeProduct = productId => {
     setCart(cart.filter(product => product.id !== productId))
-    Toastify({
-      text: "Successfully removed",
-      duration: 2000,
-      close: true,
-      stopOnFocus: true,
-      gravity: "top", 
-      position: "right",
-      offset: {
-        y: "4rem",
-      },
-      style: {
-        background: "#999999)",
-      },
-    }).showToast()
+    cartMessage("Successfully removed")
   };
 
   const clearCart = () => setCart([]);

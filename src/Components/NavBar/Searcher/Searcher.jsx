@@ -54,7 +54,7 @@ const Searcher = () => {
     <div className="searcher">
           <input type="search" placeholder="SEARCH" onChange={(e) => setSearch(e.target.value)}/>
           <button onClick={() => { searcherHandler(); setSearchOpen(true);}}><GrSearch /></button>
-          <div className={ searchOpen ? "results-container" : "results-container close"}>
+          <div className={`results-container ${searchOpen && "close"}`}>
             <button onClick={() => setSearchOpen(false)}>
               <VscClose />
             </button>

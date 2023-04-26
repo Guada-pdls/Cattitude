@@ -7,10 +7,10 @@ const FaqQuestion = ({ask, question}) => {
   return (
     <div className="faq-question">
       <button onClick={() => setOpenCuestion(!openQuestion)}>
-          <AiFillCaretRight className={openQuestion ? "question-icon rotate" : "question-icon"}/>
+          <AiFillCaretRight className={`question-icon ${openQuestion && "rotate"}`}/>
           <p className="ask">{ask}</p>
       </button >
-      <p className={openQuestion ? "question open" : "question"}>{question}</p>
+      <p className={`question ${openQuestion && "open"}`}>{question}</p>
     </div>
   );
 };
